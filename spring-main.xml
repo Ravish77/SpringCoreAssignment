@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+        
+        <!-- Injecting Values to customer object using setter -->
+        <bean id="customerObject01" class="com.accenture.lkm.beans.Customer">
+        	<property name="id" value="47"></property>
+        	<property name="name" value="Ravish"></property>
+        	<property name="phoneNo" value="9482334887"></property>
+        </bean>
+        <bean id="customerObject02" class="com.accenture.lkm.beans.Customer">
+        	<property name="id" value="48"></property>
+        	<property name="name" value="Rashmi"></property>
+        	<property name="phoneNo" value="9484455486"></property>
+        </bean>
+        
+        <!-- Injecting Values and Objects to order object -->
+        <bean id="orderObject01" class="com.accenture.lkm.beans.Order">
+        	<constructor-arg value="10013" index="0"></constructor-arg>
+        	<constructor-arg value="4" index="2"></constructor-arg>
+        	<constructor-arg value="1436.7" index="3"></constructor-arg>
+        	<constructor-arg value="15-10-2023" index="4"></constructor-arg>
+        	<constructor-arg ref="customerObject01" index="1"></constructor-arg>
+        </bean>
+        <bean id="orderObject02" class="com.accenture.lkm.beans.Order">
+        	<constructor-arg value="10014" index="0"></constructor-arg>
+        	<constructor-arg value="1" index="2"></constructor-arg>
+        	<constructor-arg value="156.9" index="3"></constructor-arg>
+        	<constructor-arg value="17-10-2023" index="4"></constructor-arg>
+        	<constructor-arg ref="customerObject02" index="1"></constructor-arg>
+        </bean>
+        <bean id="orderObject03" class="com.accenture.lkm.beans.Order">
+        	<constructor-arg value="10019" index="0"></constructor-arg>
+        	<constructor-arg value="2" index="2"></constructor-arg>
+        	<constructor-arg value="876" index="3"></constructor-arg>
+        	<constructor-arg value="15-10-2023" index="4"></constructor-arg>
+        	<constructor-arg ref="customerObject02" index="1"></constructor-arg>
+        </bean>
+        <bean id="orderObject04" class="com.accenture.lkm.beans.Order">
+        	<constructor-arg value="10112" index="0"></constructor-arg>
+        	<constructor-arg value="2" index="2"></constructor-arg>
+        	<constructor-arg value="700" index="3"></constructor-arg>
+        	<constructor-arg value="22-10-2023" index="4"></constructor-arg>
+        	<constructor-arg ref="customerObject01" index="1"></constructor-arg>
+        </bean>
+        
+        
+        <!-- Injecting order objects to List -->
+        <bean id="collectionListObject" class="com.accenture.lkm.collectioninject.CollectionTester">
+        	<property name="orderList">
+        		<list>
+        			<ref bean="orderObject01" />
+        			<ref bean="orderObject02" />
+        			<ref bean="orderObject03" />
+        			<ref bean="orderObject04" />
+        		</list>	
+        	</property>
+        </bean>
+             
+             
+</beans>
